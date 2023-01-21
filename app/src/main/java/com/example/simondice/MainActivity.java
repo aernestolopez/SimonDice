@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         b9=findViewById(R.id.b9);
         bStart=findViewById(R.id.Start);
         tv1=findViewById(R.id.textView);
+        desactivarBotones();
 
         //TranslationX
         //Objeto que necesitaremos para cualquier animación
@@ -146,9 +147,7 @@ public class MainActivity extends AppCompatActivity {
         animadorBoton.play(trasladarS).with(fadeS).before(rotationS);
         //Lanzamos las animaciones asociadas al AnimationSet
         animadorBoton.start();
-        bStart.setOnClickListener(view -> {
-            iniciarJuego(view);
-        });
+        bStart.setOnClickListener(this::iniciarJuego);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -169,19 +168,11 @@ public class MainActivity extends AppCompatActivity {
         switch(n){
             case R.id.facil:
                 controlD=0;
-                bStart.setOnClickListener(view -> {
-                    System.out.println("funca");
-                    iniciarJuego(view);
-                });
+                bStart.setOnClickListener(this::iniciarJuego);
                 return true;
             case R.id.dificil:
                 controlD=1;
-                bStart.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                       iniciarJuego(view);
-                    }
-                });
+                bStart.setOnClickListener(this::iniciarJuego);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -212,7 +203,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public void iniciarJuego(View v) {
         desactivarBotones();
-        activarBotones();
         numeroRecordar="";
         agregarUnNumeroAlFinal();
         tv1.setText("Puntuacion: "+ (numeroRecordar.length()-1));
@@ -269,7 +259,6 @@ public class MainActivity extends AppCompatActivity {
             agregarUnNumeroAlFinal();
             emitirSonido(0, controlD);
             tv1.setText("Puntuacion: " + (numeroRecordar.length()-1));
-            activarBotones();
         }
     }
 
@@ -378,5 +367,14 @@ public class MainActivity extends AppCompatActivity {
             }else
                 activarBotones();
         });
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mp1!=null)
+        {
+            mp1.release();
+            mp1=null;
+        }
     }
 }
