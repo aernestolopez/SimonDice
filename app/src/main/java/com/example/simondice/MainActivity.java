@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 bStart.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        System.out.println("no funca" + controlD);
+                       iniciarJuego(view);
                     }
                 });
                 return true;
@@ -210,15 +210,14 @@ public class MainActivity extends AppCompatActivity {
         b8.setEnabled(true);
         b9.setEnabled(true);
     }
-    public void iniciarJuego(View v)
-    {
+    public void iniciarJuego(View v) {
         desactivarBotones();
         activarBotones();
         numeroRecordar="";
         agregarUnNumeroAlFinal();
         tv1.setText("Puntuacion: "+ (numeroRecordar.length()-1));
         numeroJugador="";
-        emitirSonido(0);
+        emitirSonido(0, controlD);
     }
 
     private void agregarUnNumeroAlFinal() {
@@ -259,19 +258,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void controlarSiEsCorrecto() {
-        if (numeroJugador.charAt(numeroJugador.length()-1)!=numeroRecordar.charAt(numeroJugador.length()-1))
-        {
+        if (numeroJugador.charAt(numeroJugador.length()-1)!=numeroRecordar.charAt(numeroJugador.length()-1)) {
             Toast.makeText(this,"Perdiste",Toast.LENGTH_LONG).show();
             System.out.println("numero:" + numeroJugador);
             desactivarBotones();
         }
-        else
-        if (numeroJugador.length()==numeroRecordar.length())
-        {
+        else if (numeroJugador.length()==numeroRecordar.length()) {
             desactivarBotones();
             numeroJugador="";
             agregarUnNumeroAlFinal();
-            emitirSonido(0);
+            emitirSonido(0, controlD);
             tv1.setText("Puntuacion: " + (numeroRecordar.length()-1));
             activarBotones();
         }
@@ -329,41 +325,58 @@ public class MainActivity extends AppCompatActivity {
         controlarSiEsCorrecto();
     }
 
-   private void emitirSonido(int posicion) {
+   private void emitirSonido(int posicion, int control) {
         if (mp1!=null)
             mp1.release();
-        if(numeroRecordar.charAt(posicion)=='0')
-            mp1=MediaPlayer.create(this,R.raw.cero);
-        if(numeroRecordar.charAt(posicion)=='1')
-            mp1=MediaPlayer.create(this,R.raw.uno);
-        if(numeroRecordar.charAt(posicion)=='2')
-            mp1=MediaPlayer.create(this,R.raw.dos);
-        if(numeroRecordar.charAt(posicion)=='3')
-            mp1=MediaPlayer.create(this,R.raw.tres);
-        if(numeroRecordar.charAt(posicion)=='4')
-            mp1=MediaPlayer.create(this,R.raw.cuatro);
-        if(numeroRecordar.charAt(posicion)=='5')
-            mp1=MediaPlayer.create(this,R.raw.cinco);
-        if(numeroRecordar.charAt(posicion)=='6')
-            mp1=MediaPlayer.create(this,R.raw.seis);
-        if(numeroRecordar.charAt(posicion)=='7')
-            mp1=MediaPlayer.create(this,R.raw.siete);
-        if(numeroRecordar.charAt(posicion)=='8')
-            mp1=MediaPlayer.create(this,R.raw.ocho);
-        if(numeroRecordar.charAt(posicion)=='9')
-            mp1=MediaPlayer.create(this,R.raw.nueve);
+        if (control==0) {
+            if (numeroRecordar.charAt(posicion) == '0')
+                mp1 = MediaPlayer.create(this, R.raw.cero);
+            if (numeroRecordar.charAt(posicion) == '1')
+                mp1 = MediaPlayer.create(this, R.raw.uno);
+            if (numeroRecordar.charAt(posicion) == '2')
+                mp1 = MediaPlayer.create(this, R.raw.dos);
+            if (numeroRecordar.charAt(posicion) == '3')
+                mp1 = MediaPlayer.create(this, R.raw.tres);
+            if (numeroRecordar.charAt(posicion) == '4')
+                mp1 = MediaPlayer.create(this, R.raw.cuatro);
+            if (numeroRecordar.charAt(posicion) == '5')
+                mp1 = MediaPlayer.create(this, R.raw.cinco);
+            if (numeroRecordar.charAt(posicion) == '6')
+                mp1 = MediaPlayer.create(this, R.raw.seis);
+            if (numeroRecordar.charAt(posicion) == '7')
+                mp1 = MediaPlayer.create(this, R.raw.siete);
+            if (numeroRecordar.charAt(posicion) == '8')
+                mp1 = MediaPlayer.create(this, R.raw.ocho);
+            if (numeroRecordar.charAt(posicion) == '9')
+                mp1 = MediaPlayer.create(this, R.raw.nueve);
+        }else{
+            if (numeroRecordar.charAt(posicion) == '0')
+                mp1 = MediaPlayer.create(this, R.raw.cerod);
+            if (numeroRecordar.charAt(posicion) == '1')
+                mp1 = MediaPlayer.create(this, R.raw.unod);
+            if (numeroRecordar.charAt(posicion) == '2')
+                mp1 = MediaPlayer.create(this, R.raw.dosd);
+            if (numeroRecordar.charAt(posicion) == '3')
+                mp1 = MediaPlayer.create(this, R.raw.tresd);
+            if (numeroRecordar.charAt(posicion) == '4')
+                mp1 = MediaPlayer.create(this, R.raw.cuatrod);
+            if (numeroRecordar.charAt(posicion) == '5')
+                mp1 = MediaPlayer.create(this, R.raw.cincod);
+            if (numeroRecordar.charAt(posicion) == '6')
+                mp1 = MediaPlayer.create(this, R.raw.seisd);
+            if (numeroRecordar.charAt(posicion) == '7')
+                mp1 = MediaPlayer.create(this, R.raw.sieted);
+            if (numeroRecordar.charAt(posicion) == '8')
+                mp1 = MediaPlayer.create(this, R.raw.ochod);
+            if (numeroRecordar.charAt(posicion) == '9')
+                mp1 = MediaPlayer.create(this, R.raw.nueved);
+        }
         mp1.start();
-        mp1.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                if (posicion<numeroRecordar.length()-1)
-                {
-                    emitirSonido(posicion+1);
-                }
-                else
-                    activarBotones();
-            }
+        mp1.setOnCompletionListener(mp -> {
+            if (posicion<numeroRecordar.length()-1) {
+                emitirSonido(posicion+1, controlD);
+            }else
+                activarBotones();
         });
-
     }
 }
