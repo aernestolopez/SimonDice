@@ -38,6 +38,7 @@
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#673AB7"
+                android:onClick="presionBoton7"
                 android:text="7" />
 
             <Button
@@ -47,6 +48,7 @@
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#673AB7"
+                android:onClick="presionBoton8"
                 android:text="8" />
 
             <Button
@@ -56,6 +58,7 @@
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#673AB7"
+                android:onClick="presionBoton9"
                 android:text="9" />
         </TableRow>
 
@@ -71,6 +74,7 @@
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#673AB7"
+                android:onClick="presionBoton4"
                 android:text="4" />
 
             <Button
@@ -80,6 +84,7 @@
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#673AB7"
+                android:onClick="presionBoton5"
                 android:text="5" />
 
             <Button
@@ -89,6 +94,7 @@
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#673AB7"
+                android:onClick="presionBoton6"
                 android:text="6" />
         </TableRow>
 
@@ -104,6 +110,7 @@
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#673AB7"
+                android:onClick="presionBoton1"
                 android:text="1" />
 
             <Button
@@ -113,6 +120,7 @@
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#673AB7"
+                android:onClick="presionBoton2"
                 android:text="2" />
 
             <Button
@@ -122,6 +130,7 @@
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#673AB7"
+                android:onClick="presionBoton3"
                 android:text="3" />
 
         </TableRow>
@@ -138,6 +147,7 @@
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#673AB7"
+                android:onClick="presionBoton0"
                 android:text="0" />
         </TableRow>
 
