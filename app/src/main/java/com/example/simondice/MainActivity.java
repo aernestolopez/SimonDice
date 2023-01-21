@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+    //Declaramos variables
     int controlD=0;
     Button b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bStart;
     String numeroRecordar;
@@ -44,114 +45,64 @@ public class MainActivity extends AppCompatActivity {
         tv1=findViewById(R.id.textView);
         desactivarBotones();
 
-        //TranslationX
-        //Objeto que necesitaremos para cualquier animación
+        //Animacion de los botones
+
         AnimatorSet animadorBoton=new AnimatorSet();
-        //1.º Trasladar de una posición inicial (-800) a una final (donde estaba la vista)
+        ObjectAnimator trasladar0=ObjectAnimator.ofFloat(b0,"translationX",800f,0f);
+        trasladar0.setDuration(2500);
+        animadorBoton.play(trasladar0);
+        animadorBoton.start();
+
         ObjectAnimator trasladar=ObjectAnimator.ofFloat(b1,"translationX",-800f,0f);
-        //La animación durará 2.5 segundos
         trasladar.setDuration(2500);
-        //Asociamos la animación con el AnimationSet
         animadorBoton.play(trasladar);
-        //Lanzamos las animaciones asociadas al AnimationSet
         animadorBoton.start();
-        //Trasladar y
-        //1.º Trasladar de una posición inicial 500px hacia abajo
+
         ObjectAnimator trasladary=ObjectAnimator.ofFloat(b2,"translationY",500f,0f);
-        //La animación durará 2.5 segundos
         trasladary.setDuration(2500);
-        //Asociamos la animación con el AnimationSet
         animadorBoton.play(trasladary);
-        //Lanzamos las animaciones asociadas al AnimationSet
         animadorBoton.start();
-        //Rotation
-        //Vuelta completa, 0 a 360º
-        ObjectAnimator rotation=ObjectAnimator.ofFloat(b3,"rotation",0f,360f);
-        //La animación durará 2.5 segundos
-        rotation.setDuration(2500);
-        //Asociamos la animación con el AnimationSet
-        animadorBoton.play(rotation);
-        //Lanzamos las animaciones asociadas al AnimationSet
+
+        ObjectAnimator fade2=ObjectAnimator.ofFloat(b3,"alpha",0f,1f);
+        fade2.setDuration(2500);
+        animadorBoton.play(fade2);
         animadorBoton.start();
-        //Rotacion X
-        //Vuelta completa, 0 a 360º, respecto al ejeX
-        ObjectAnimator rotationx=ObjectAnimator.ofFloat(b4,"rotationX",0f,360f);
-        //La animación durará 5 segundos
-        rotationx.setDuration(2500);
-        //Asociamos la animación con el AnimationSet
-        animadorBoton.play(rotationx);
-        //Lanzamos las animaciones asociadas al AnimationSet
+
+        ObjectAnimator trasladar1=ObjectAnimator.ofFloat(b4,"translationX",-800f,0f);
+        trasladar1.setDuration(2500);
+        animadorBoton.play(trasladar1);
         animadorBoton.start();
-        //Rotacion Y
-        //Vuelta completa, 0 a 360º, respecto al ejeY
-        ObjectAnimator rotationy=ObjectAnimator.ofFloat(b5,"rotationY",0f,360f);
-        //La animación durará 2.5 segundos
-        rotationy.setDuration(2500);
-        //Asociamos la animación con el AnimationSet
-        animadorBoton.play(rotationy);
-        //Lanzamos las animaciones asociadas al AnimationSet
+
+        ObjectAnimator trasladary1=ObjectAnimator.ofFloat(b5,"translationY",500f,0f);
+        trasladary1.setDuration(2500);
+        animadorBoton.play(trasladary1);
         animadorBoton.start();
-        //Alpha
-        // fade en 2.5 seg. De fade completo a vere como se vería normalmente.
+
         ObjectAnimator fade=ObjectAnimator.ofFloat(b6,"alpha",0f,1f);
         fade.setDuration(2500);
-        //Asociamos la animación con el AnimationSet
         animadorBoton.play(fade);
-        //Lanzamos las animaciones asociadas al AnimationSet
         animadorBoton.start();
-        //Scale X
-        //Escalado desde tamaño 0 al doble del tamaño inicial respecto al ejeX
-        ObjectAnimator scaleX=ObjectAnimator.ofFloat(b7,"ScaleX",2f,1f);
-        scaleX.setDuration(2500);
-        //Asociamos la animación con el AnimationSet
-        animadorBoton.play(scaleX);
-        //Lanzamos las animaciones asociadas al AnimationSet
+
+        ObjectAnimator trasladar2=ObjectAnimator.ofFloat(b7,"translationX",-800f,0f);
+        trasladar2.setDuration(2500);
+        animadorBoton.play(trasladar2);
         animadorBoton.start();
-        //Scale Y
-        //Escalado desde tamaño 0 al doble tamaño inicial respecto al ejeY
-        ObjectAnimator scaleY=ObjectAnimator.ofFloat(b8,"ScaleY",2f,1f);
-        scaleY.setDuration(2500);
-        //Asociamos la animación con el AnimationSet
-        animadorBoton.play(scaleY);
-        //Lanzamos las animaciones asociadas al AnimationSet
+
+        ObjectAnimator trasladary2=ObjectAnimator.ofFloat(b8,"translationY",500f,0f);
+        trasladary2.setDuration(2500);
+        animadorBoton.play(trasladary2);
         animadorBoton.start();
+
         ObjectAnimator fade1=ObjectAnimator.ofFloat(b9,"alpha",0f,1f);
         fade1.setDuration(2500);
-        //Asociamos la animación con el AnimationSet
         animadorBoton.play(fade1);
-        //Lanzamos las animaciones asociadas al AnimationSet
         animadorBoton.start();
-        //1.º Trasladar de una posición inicial (-800) a una final (donde estaba la vista)
-        ObjectAnimator trasladar0=ObjectAnimator.ofFloat(b0,"translationX",-800f,0f);
-        //La animación durará 5 segundos
-        trasladar.setDuration(2500);
-        //Vuelta completa, 0 a 360º, respecto al ejeX
-        ObjectAnimator rotation0=ObjectAnimator.ofFloat(b0,"rotation",0f,360f);
-        //La animación durará 5 segundos
-        rotation.setDuration(2500);
-        //Asociamos la animación con el AnimationSet
-        animadorBoton.play(trasladar0).with(rotation0);
-        //Lanzamos las animaciones asociadas al AnimationSet
-        animadorBoton.start();
-        ObjectAnimator trasladarS=ObjectAnimator.ofFloat(bStart,"translationX",-800f,0f);
-        //La animación durará 5 segundos
-        trasladar.setDuration(2500);
-        //Vuelta completa, 0 a 360º, respecto al ejeX
-        ObjectAnimator rotationS=ObjectAnimator.ofFloat(bStart,"rotation",0f,360f);
-        //La animación durará 5 segundos
-        rotation.setDuration(2500);
-        // fade en 5 seg. De fade completo a vere como se vería normalmente.
-        ObjectAnimator fadeS=ObjectAnimator.ofFloat(bStart,"alpha",0f,1f);
-        fade.setDuration(2500);
-        //Asociamos la animación con el AnimationSet
-        animadorBoton.play(trasladarS).with(fadeS).before(rotationS);
-        //Lanzamos las animaciones asociadas al AnimationSet
-        animadorBoton.start();
+        //Si inicia la partida sin elegir dificultad se inicia en la dificultad facil
         bStart.setOnClickListener(this::iniciarJuego);
     }
+    //Inflamos el menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menudificultad, menu);
         return super.onCreateOptionsMenu(menu);
@@ -177,6 +128,10 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    /**
+     * Metodo para desactivar los botones
+     */
     public void desactivarBotones(){
         b0.setEnabled(false);
         b1.setEnabled(false);
@@ -189,6 +144,10 @@ public class MainActivity extends AppCompatActivity {
         b8.setEnabled(false);
         b9.setEnabled(false);
     }
+
+    /**
+     * Metodo para activar los botones
+     */
     public void activarBotones(){
         b0.setEnabled(true);
         b1.setEnabled(true);
@@ -201,6 +160,11 @@ public class MainActivity extends AppCompatActivity {
         b8.setEnabled(true);
         b9.setEnabled(true);
     }
+
+    /**
+     * Metodo para iniciar el juego
+     * @param v
+     */
     public void iniciarJuego(View v) {
         desactivarBotones();
         numeroRecordar="";
@@ -210,7 +174,11 @@ public class MainActivity extends AppCompatActivity {
         emitirSonido(0, controlD);
     }
 
+    /**
+     * Metodo para agregar un numero al final
+     */
     private void agregarUnNumeroAlFinal() {
+        //Tomamos un numero aleatorio del 0 al 9 y con el switch lo añadimos al numero a recordar
         int ale= rnd.nextInt(10);
         switch (ale) {
             case 0:
@@ -244,13 +212,14 @@ public class MainActivity extends AppCompatActivity {
                 numeroRecordar = numeroRecordar + "9";
                 break;
         }
-        System.out.println(numeroRecordar);
     }
 
+    /**
+     * Metodo para comprobar si los botones pulsados coinciden con los que se han dicho
+     */
     private void controlarSiEsCorrecto() {
         if (numeroJugador.charAt(numeroJugador.length()-1)!=numeroRecordar.charAt(numeroJugador.length()-1)) {
             Toast.makeText(this,"Perdiste",Toast.LENGTH_LONG).show();
-            System.out.println("numero:" + numeroJugador);
             desactivarBotones();
         }
         else if (numeroJugador.length()==numeroRecordar.length()) {
@@ -262,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // TODO: 21/1/23 Cambiar a metodo estandar con view.getid
+    //Metodos de los botones
     public void presionBoton0(View v)
     {
         numeroJugador=numeroJugador+"0";
@@ -314,6 +283,11 @@ public class MainActivity extends AppCompatActivity {
         controlarSiEsCorrecto();
     }
 
+    /**
+     * Metodo que se encarga de reproducir el sonido dependiendo del numero aleatorio tomado
+     * @param posicion
+     * @param control variable que se utiliza como control de dificultad para elegir que set de audios usar
+     */
    private void emitirSonido(int posicion, int control) {
         if (mp1!=null)
             mp1.release();
@@ -368,6 +342,10 @@ public class MainActivity extends AppCompatActivity {
                 activarBotones();
         });
     }
+
+    /**
+     * Se liberan recursos no necesarios
+     */
     @Override
     protected void onStop() {
         super.onStop();
